@@ -6,7 +6,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,8 +49,11 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public void saveUser(User user, String roleName) {
-        if (user.getId() == 0 || !userRepository.findById(user.getId()).get().getPassword().equals(user.getPassword()))
+        if (user.getId() == 0 || !userRepository.findById(user.getId()).get()
+                .getPassword().equals(user.getPassword())){
             user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
+
         Role role = roleService.findByName(roleName);
         user.setRoles(Collections.singletonList(role));
         userRepository.save(user);

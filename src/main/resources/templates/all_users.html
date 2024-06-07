@@ -79,8 +79,7 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>Name</th>
                                 <th>Age</th>
                                 <th>Username</th>
                                 <th>Role</th>
@@ -92,7 +91,6 @@
                             <tr th:each="user : ${allUsers}">
                                 <td th:text="${user.getId()}"/>
                                 <td th:text="${user.getName()}"/>
-                                <td th:text="${user.getLastname()}"/>
                                 <td th:text="${user.getAge()}"/>
                                 <td th:text="${user.getUsername()}"/>
                                 <td>
@@ -121,21 +119,11 @@
                                                                class="form-control" name="id" required/>
                                                         <br>
 
-                                                        <label for="name" class="font-weight-bold mb-0">First
-                                                            name</label>
+                                                        <label for="name" class="font-weight-bold mb-0">Name</label>
                                                         <br>
                                                         <input type="text" th:value="${user.getName()}" id="name"
                                                                class="form-control" name="name" required
                                                                minlength="2" maxlength="100" pattern="[A-Za-z]+"/>
-                                                        <br>
-
-                                                        <label for="lastname" class="font-weight-bold mb-0">Last
-                                                            name</label>
-                                                        <br>
-                                                        <input type="text" th:value="${user.getLastname()}"
-                                                               id="lastname" class="form-control" name="lastname"
-                                                               required
-                                                               minlength="2" maxlength="150" pattern="[A-Za-z]+"/>
                                                         <br>
 
                                                         <label for="age" class="font-weight-bold mb-0">Age</label>
@@ -170,9 +158,9 @@
                                                                 size="2"
                                                                 multiple aria-label="multiple select example"
                                                                 name="role" required>
-                                                            <option th:value="${roles.get(1).getName()}">ADMIN
+                                                            <option th:value="${roles.get(0).getName()}">ADMIN
                                                             </option>
-                                                            <option th:value="${roles.get(0).getName()}">USER
+                                                            <option th:value="${roles.get(1).getName()}">USER
                                                             </option>
                                                         </select>
                                                     </div>
@@ -212,21 +200,13 @@
                                                                readonly class="form-control" name="id"/>
                                                         <br>
 
-                                                        <label for="name-del" class="font-weight-bold mb-0">First
-                                                            name</label>
+                                                        <label for="name-del" class="font-weight-bold mb-0">Name</label>
                                                         <br>
                                                         <input type="text" th:value="${user.getName()}"
                                                                id="name-del" readonly class="form-control"
                                                                name="name"/>
                                                         <br>
 
-                                                        <label for="lastname-del" class="font-weight-bold mb-0">Last
-                                                            name</label>
-                                                        <br>
-                                                        <input type="text" th:value="${user.getLastname()}"
-                                                               id="lastname-del" readonly class="form-control"
-                                                               name="lastname"/>
-                                                        <br>
 
                                                         <label for="age-del"
                                                                class="font-weight-bold mb-0">Age</label>
@@ -259,9 +239,9 @@
                                                                 size="2"
                                                                 multiple aria-label="multiple select example"
                                                                 disabled name="role">
-                                                            <option th:value="${roles.get(1).getName()}">ADMIN
+                                                            <option th:value="${roles.get(0).getName()}">ADMIN
                                                             </option>
-                                                            <option th:value="${roles.get(0).getName()}">USER
+                                                            <option th:value="${roles.get(1).getName()}">USER
                                                             </option>
                                                         </select>
                                                     </div>
@@ -285,17 +265,6 @@
         </div>
     </div>
 </div>
-<!--<script>-->
-<!--    // 'use strict'-->
-<!--    const editForm = document.querySelector('.requires-validation')-->
-<!--    console.log('********************* Hello from JS! *********************', event.type)-->
-<!--    alert("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")-->
-<!--    // editForm.addEventListener('submit', function (event) {-->
-<!--    //     event.stopPropagation()-->
-<!--    //     console.log('********************* Hello from JS! *********************', event.type)-->
-<!--    // }-->
-<!--    // )-->
-<!--</script>-->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

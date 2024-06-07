@@ -23,7 +23,7 @@ import java.util.Collection;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,11 +41,6 @@ public class User implements UserDetails {
     @NotBlank(message = "Name is required field")
     @Pattern(regexp = "[A-Za-z]+", message = "Name must consist only letters")
     private String name;
-    @Column
-    @Size(min = 2, max = 150, message = "Lastname must be min 2 and max 150 symbols")
-    @NotBlank(message = "Lastname is required field")
-    @Pattern(regexp = "[A-Za-z]+", message = "Lastname must consist only letters")
-    private String lastname;
     @Column
     @Min(value = 1, message = "Age must be greater than 0")
     @Max(value = 150, message = "Age must be less than 150")
@@ -67,9 +62,8 @@ public class User implements UserDetails {
 
     public User() {}
 
-    public User(String name, String lastname, int age) {
+    public User(String name, int age) {
         this.name = name;
-        this.lastname = lastname;
         this.age = age;
     }
 
@@ -87,14 +81,6 @@ public class User implements UserDetails {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public int getAge() {
@@ -151,7 +137,6 @@ public class User implements UserDetails {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", lastname='" + lastname + '\'' +
                 ", age=" + age +
                 '}';
     }

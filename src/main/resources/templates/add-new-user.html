@@ -78,26 +78,14 @@
                         <form autocomplete="off" class="text-center col-4 mx-auto" th:method="POST"
                               th:action="@{/admin/saveUser}" th:object="${user}">
                             <br>
-                            <label for="name-new" class="font-weight-bold mb-0">First name</label>
+                            <label for="name-new" class="font-weight-bold mb-0">Name</label>
                             <br>
-                            <input type="text" placeholder="First name" id="name-new" class="form-control"
+                            <input type="text" placeholder="Name" id="name-new" class="form-control"
                                    name="name" required th:value="${user.getName()}"
                                    minlength="2" maxlength="100" pattern="[A-Za-z]+"/>
                             <div th:if="${#fields.hasErrors('name')}" class="font-weight-light" style="color: red">
                                 <p th:each="err : ${#fields.errors('name')}"
                                 th:text="${err}"></p>
-                            </div>
-                            <br>
-
-
-                            <label for="lastname-new" class="font-weight-bold mb-0">Last name</label>
-                            <br>
-                            <input type="text" placeholder="Last name" id="lastname-new" class="form-control"
-                                   name="lastname" required th:value="${user.getLastname()}"
-                                   minlength="2" maxlength="150" pattern="[A-Za-z]+"/>
-                            <div th:if="${#fields.hasErrors('lastname')}" class="font-weight-light" style="color: red">
-                                <p th:each="err : ${#fields.errors('lastname')}"
-                                   th:text="${err}"></p>
                             </div>
                             <br>
 
@@ -137,8 +125,8 @@
                             <br>
                             <select id="roles-new" class="custom-select form-control col-12" size="2" multiple
                                     aria-label="multiple select example" name="role" required>
-                                <option th:value="${roles.get(1).getName()}">ADMIN</option>
-                                <option th:value="${roles.get(0).getName()}">USER</option>
+                                <option th:value="${roles.get(0).getName()}">ADMIN</option>
+                                <option th:value="${roles.get(1).getName()}">USER</option>
                             </select>
                             <br>
                             <input type="submit" class="btn btn-success mt-3 mb-3" value="Add new user"/>

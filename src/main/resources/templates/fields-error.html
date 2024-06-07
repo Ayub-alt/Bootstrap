@@ -27,19 +27,14 @@
             </div>
             <form autocomplete="off" class="text-center col-12 mx-auto" th:method="POST" th:action="@{/admin/saveUser}"
                   th:object="${user}">
-                <label for="name-new" class="font-weight-bold mb-0">First name</label>
+                <label for="name-new" class="font-weight-bold mb-0">Name</label>
                 <p style="font-size: 11px" class="mb-0 text-black-50">Name must consist only letters and be min 2 and
                     max 100 symbols</p>
-                <input type="text" placeholder="First name" id="name-new" class="form-control"
+                <input type="text" placeholder="Name" id="name-new" class="form-control"
                        name="name" th:value="${user.getName()}" required/>
                 <br>
 
-                <label for="lastname-new" class="font-weight-bold mb-0">Last name</label>
-                <p style="font-size: 11px" class="mb-0 text-black-50">Lastname must consist only letters and be min 2
-                    and max 150 symbols</p>
-                <input type="text" placeholder="Last name" id="lastname-new" class="form-control"
-                       name="lastname" th:value="${user.getLastname()}" required/>
-                <br>
+
 
                 <label for="age-new" class="font-weight-bold mb-0">Age</label>
                 <p style="font-size: 11px" class="mb-0 text-black-50">Age must be greater than 0 and less than 150</p>
